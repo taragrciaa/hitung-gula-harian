@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Glucopet – Edukasi, Tracking Gula & Activity Burn</title>
+<meta name="theme-color" content="#FF6B8B">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top"><b class="logo gt">🐾 Glucopet</b><span id="chip" class="chip">0/50 g</span></header>
+<main>
+  <section id="faktapedia" class="tab">
+    <div class="hero">
+      <div class="hero-top">
+        <div>
+          <span class="brand">🐾 Glucopet</span>
+          <h1><span class="gc">Yakin Minuman Hits-mu Aman?</span> 🧋 <span class="gc">1 Boba Bikin Jatah Gula Seharian Ludes!</span></h1>
+        </div>
+        <svg class="mascot" viewBox="0 0 100 120" aria-hidden="true"><rect x="62" y="2" width="8" height="32" rx="4" transform="rotate(14 66 18)" fill="#00F5D4"/><path d="M26 30l-8-14 14 6zM74 30l8-14-14 6z" fill="#fff"/><path d="M18 30h64l-8 78a8 8 0 0 1-8 7H34a8 8 0 0 1-8-7z" fill="#fff"/><path d="M22 62h56l-4 46a8 8 0 0 1-8 7H34a8 8 0 0 1-8-7z" fill="#FF6B8B"/><circle cx="38" cy="76" r="5" fill="#2A1B4D"/><circle cx="62" cy="76" r="5" fill="#2A1B4D"/><path d="M42 88q8 8 16 0" stroke="#2A1B4D" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="29" cy="86" r="5" fill="#fff" opacity=".5"/><circle cx="71" cy="86" r="5" fill="#fff" opacity=".5"/></svg>
+      </div>
+      <p class="sub">Eksplorasi fakta tersembunyi gula, hitung jatah harianmu, dan foto makananmu di Glucopet.</p>
+      <div class="cta">
+        <button class="btn" id="cta1">🚀 Jelajahi Faktapedia</button>
+        <button class="btn alt" data-t="lens">📸 Cek Foto Makanan (Gula Lens)</button>
+      </div>
+      <div class="lims">
+        <div><b class="gc">50 g</b><span>Kemenkes RI (Permenkes 30/2013)<br>maks. 4 sdm / hari</span></div>
+        <div><b class="gc">25 g</b><span>AHA untuk remaja<br>maks. 6 sdt / hari</span></div>
+      </div>
+      <div class="conv"><span>1 sdm = 12,5 g</span><span>1 sdt = 4 g</span><span>WHO: &lt;10% kalori</span></div>
+      <p id="hs"></p>
+    </div>
+    <h2 class="gt" id="jelajah">Bahaya Tersembunyi Gula</h2>
+    <div id="danger" class="grid"></div>
+    <h2 class="gt">🔎 Detektif Label Kemasan</h2>
+    <div class="card pad"><p>Baca komposisi: <b>jika gula ada di 3 urutan pertama, produk itu TINGGI GULA.</b> Gula punya banyak nama samaran:</p><div id="alias" class="chips"></div><p>Lalu cek "Gula (g)" dan "Takaran saji" di tabel Informasi Nilai Gizi. Kalau kamu habiskan sebotol dan isinya 2 sajian, kalikan 2.</p></div>
+    <h2 class="gt">Mitos vs Fakta <small>(tap untuk balik)</small></h2>
+    <div id="myths" class="grid"></div>
+    <h2 class="gt">Craving Hacks</h2>
+    <div class="card pad rule"><span>💧</span><p><b>Aturan Air Putih 1:1.</b> Tiap 1 gelas minuman manis, minum 1 gelas air putih. Craving sering cuma haus yang menyamar.</p></div>
+    <div id="hacks" class="grid sm"></div>
+  </section>
+
+  <section id="kalkulator" class="tab">
+    <div id="trk"></div>
+    <h2 class="gt">🧮 Kalkulator Batas Gula</h2>
+    <form id="cf" class="card pad">
+      <label>Usia (tahun)<input id="age" type="number" min="10" max="90" value="20" required></label>
+      <label>Jenis kelamin<select id="sex"><option value="m">Laki-laki</option><option value="f">Perempuan</option></select></label>
+      <label>Berat badan (kg)<input id="wt" type="number" min="25" max="200" value="55" required></label>
+      <label>Aktivitas harian<select id="act"><option value="1.2">Santai (duduk seharian)</option><option value="1.375" selected>Ringan (olahraga 1-3x/minggu)</option><option value="1.55">Aktif (olahraga 4-5x/minggu)</option><option value="1.725">Sangat aktif (atlet)</option></select></label>
+      <button class="btn">Hitung & set batas harianku</button>
+    </form>
+    <div id="cr"></div>
+  </section>
+
+  <section id="lens" class="tab">
+    <h2 class="gt">📸 Gula Lens</h2>
+    <div id="drop" class="card drop"><span class="emo">🍜🧋🍰</span><b>Foto makanan atau minuman apa saja</b><small>Seret fotomu ke sini, atau pilih salah satu tombol</small>
+      <div class="two">
+        <label class="btn">🖼️ Pilih dari Galeri<input id="gal" type="file" accept="image/*" hidden></label>
+        <label class="btn alt">📸 Ambil Foto Kamera<input id="cam" type="file" accept="image/*" capture="environment" hidden></label>
+      </div>
+    </div>
+    <div id="pw" class="pw" hidden><img id="prev" alt="Foto makanan"><i class="laser"></i></div>
+    <div id="lr"></div>
+  </section>
+
+  <section id="kuliner" class="tab">
+    <h2 class="gt">🍱 Database Kuliner Indo</h2>
+    <input id="q" class="search" type="search" placeholder="Cari klepon, boba, soda…">
+    <div id="pills" class="pills"></div>
+    <div id="fg" class="grid sm"></div>
+  </section>
+
+  <section id="hydration" class="tab">
+    <h2 class="gt">💧 Hydration Tracker</h2>
+    <div class="card pad hy">
+      <div class="glassbox"><div id="water" class="water"><i class="wv"></i><i class="wv w2"></i></div><b id="pct" class="gt">0%</b></div>
+      <div>
+        <label>Berat badan (kg)<input id="hw" type="number" min="25" max="200" value="55"></label>
+        <p id="ht"></p>
+        <div id="gb" class="gl"></div>
+        <button id="hr" class="btn alt">Reset hari ini</button>
+      </div>
+    </div>
+  </section>
+</main>
+<nav id="bnav" aria-label="Navigasi utama"></nav>
+<div id="modal" class="modal" hidden><div class="card pad mc"><button id="mx" class="x" aria-label="Tutup">✕</button><div id="mb"></div></div></div>
+<script src="app.js"></script>
+</body>
+</html>
